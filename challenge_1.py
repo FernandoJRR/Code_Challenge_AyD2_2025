@@ -1,15 +1,23 @@
-def anagrama(pal1, pal2):
-    pal1 = pal1.replace(" ", "").lower()
-    pal2 = pal2.replace(" ", "").lower()
+def anagrama(pal1: str, pal2: str):
+    pal1: str = pal1.replace(" ", "").lower()
+    pal2: str = pal2.replace(" ", "").lower()
 
     return sorted(pal1) == sorted(pal2)
 
-def main():
-    palabra1 = input("Primer palabra:")
-    palabra2 = input("Segunda palabra:")
-    resultado = anagrama(palabra1, palabra2)
-    print(resultado)
+def test():
+    palabra1_1 = "espada"
+    palabra1_2 = "pesada"
+    assert anagrama(palabra1_1, palabra1_2) == True
+    palabra2_1 = "hola"
+    palabra2_2 = "cola"
+    assert anagrama(palabra2_1, palabra2_2) == False
+    palabra3_1 = "amor"
+    palabra3_2 = "roma"
+    assert anagrama(palabra3_1, palabra3_2) == True
+    print("Todo correcto")
 
+def main():
+    test()
 
 if __name__ == "__main__":
     main()

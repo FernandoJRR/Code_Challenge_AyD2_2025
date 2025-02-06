@@ -1,6 +1,11 @@
+#La solucion tiene una complejidad de
+#O(n log n)
+#Esto debido a que la funcion sorted() de Python usa el Timsort
+#que tiene esa complejidad
+#No hay mas operaciones que aumenten drasticamente la complejidad de la funcion
 def anagrama(pal1: str, pal2: str):
-    pal1: str = pal1.replace(" ", "").lower()
-    pal2: str = pal2.replace(" ", "").lower()
+    pal1: str = pal1
+    pal2: str = pal2
 
     return sorted(pal1) == sorted(pal2)
 

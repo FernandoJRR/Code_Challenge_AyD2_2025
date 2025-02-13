@@ -4,7 +4,6 @@ Esto debido a que aunque es recursiva, la cantidad de elementos a procesar no au
 Los elementos de la lista son recorridos linealmente
 La funcion extend() evita recorrer los dos arrays para crear el array combinado, simplificando la complejidad resultante
 """
-import collections.abc
 def transform_array(complex_array):
     empty_array = []
     for element in complex_array:

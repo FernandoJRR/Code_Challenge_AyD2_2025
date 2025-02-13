@@ -18,11 +18,24 @@ def transform_array(complex_array):
             empty_array.append(element)
     return empty_array
 
+"""Version alternativa, tambien con O(n) pero sin el uso de extend"""
+def transform_array_2(complex_array, current_array):
+    for element in complex_array:
+        #Comprueba si el elemento actual es un arreglo
+        if isinstance(element, list):
+            #empty_array = empty_array + transform_array(element)
+            transform_array_2(element, current_array)
+        else:
+            current_array.append(element)
+    return current_array
+
+
 
 def test_1():
     print("Test 1...")
 
     assert transform_array([1,2,["3","4"]]) == [1,2,"3","4"]
+    assert transform_array_2([1,2,["3","4"]],[]) == [1,2,"3","4"]
 
     print("Exito")
     print("======================")
@@ -31,6 +44,7 @@ def test_2():
     print("Test 2...")
 
     assert transform_array([1,2,[3,4,[5,6]]]) == [1,2,3,4,5,6]
+    assert transform_array_2([1,2,[3,4,[5,6]]],[]) == [1,2,3,4,5,6]
 
     print("Exito")
     print("======================")
@@ -39,6 +53,7 @@ def test_3():
     print("Test 3...")
 
     assert transform_array([1,2,["a","b",[5,6]]]) == [1,2,"a","b",5,6]
+    assert transform_array_2([1,2,["a","b",[5,6]]],[]) == [1,2,"a","b",5,6]
 
     print("Exito")
     print("======================")
@@ -47,6 +62,7 @@ def test_4():
     print("Test 4...")
 
     assert transform_array([1,2,[3,4,[5,6,[7,8,[9,10]]]]]) == [1,2,3,4,5,6,7,8,9,10]
+    assert transform_array_2([1,2,[3,4,[5,6,[7,8,[9,10]]]]],[]) == [1,2,3,4,5,6,7,8,9,10]
 
     print("Exito")
     print("======================")
@@ -55,6 +71,7 @@ def test_5():
     print("Test 5...")
 
     assert transform_array([1,2,[3,4,[5,6,[7,8,[9,10,[11,12],13]]]]]) == [1,2,3,4,5,6,7,8,9,10,11,12,13]
+    assert transform_array_2([1,2,[3,4,[5,6,[7,8,[9,10,[11,12],13]]]]],[]) == [1,2,3,4,5,6,7,8,9,10,11,12,13]
 
     print("Exito")
     print("======================")
@@ -63,6 +80,7 @@ def test_6():
     print("Test 6...")
 
     assert transform_array([1,2,[3,[4,5,[6,7],8,9],10],11]) == [1,2,3,4,5,6,7,8,9,10,11]
+    assert transform_array_2([1,2,[3,[4,5,[6,7],8,9],10],11],[]) == [1,2,3,4,5,6,7,8,9,10,11]
 
     print("Exito")
     print("======================")

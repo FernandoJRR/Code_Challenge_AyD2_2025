@@ -11,7 +11,8 @@ def transform_array(complex_array):
         if isinstance(element, list):
             #empty_array = empty_array + transform_array(element)
             """Se usa el metodo extend en lugar del operador + ya que esto implica crear un array recorriendo
-            el array existente y el array nuevo dando como complejidad n^2, esto lo simplifica a n"""
+            el array existente y el array nuevo dando como complejidad n^2, esto lo simplifica a n
+            ya que el metodo solo 'junta' a los arreglos en memoria"""
             empty_array.extend(transform_array(element))
         else:
             empty_array.append(element)

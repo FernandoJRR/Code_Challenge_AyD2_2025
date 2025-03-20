@@ -31,4 +31,29 @@ public class DriverService {
             return this.driverRepository.save(driver);
         }
     }
+
+    public Driver updateDriver(Driver driver) throws Exception {
+        Boolean driverExists = this.driverRepository.existsById(driver.getId());
+        if (!driverExists) {
+            throw new Exception("El usuario ingrsado no existe");
+        }
+        Optional<Driver> existantName = this.getDriverByName(driver.getName());
+        if (existantName.isPresent()) {
+            Driver existantDriver = existantName.get();
+            if (existantDriver.getId() != driver.getId()) {
+                throw new Exception("El nombre ya existe, por lo que no puedes usarlo");
+            }
+            return this.driverRepository.save(driver);
+        } else {
+            return this.driverRepository.save(driver);
+        }
+    }
+
+    public void deleteDriver(Long id_driver) throws Exception {
+        Boolean driverExists = this.driverRepository.existsById(id_driver);
+        if (!driverExists) {
+            throw new Exception("El usuario ingrsado no existe");
+        }
+        this.driverRepository.deleteById(id_driver);
+    }
 }
